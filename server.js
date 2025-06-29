@@ -6,7 +6,12 @@ require('dotenv').config();
 const authRoutes = require('./routes/userRoutes');
 
 const app = express();
-app.use(cors());
+
+// ✅ CORRECT: Add CORS origins properly
+app.use(cors({
+    origin: ["http://127.0.0.1:5500", "https://physics-lab-frontend.vercel.app"]
+}));
+
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
