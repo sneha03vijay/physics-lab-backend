@@ -9,7 +9,7 @@ const app = express();
 
 // ✅ Replace with your actual Vercel frontend URL
 const corsOptions = {
-  origin: "https://physics-lab-frontend.vercel.app/", 
+  origin: "https://physics-lab-frontend.vercel.app", 
   // OR if your Vercel URL is something like:
   // "https://physics-lab-frontend-2ba7xtd7o-sneha-vijays-projects.vercel.app",
   // then write that exact one.
