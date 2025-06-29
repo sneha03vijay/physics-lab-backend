@@ -6,12 +6,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/userRoutes');
 
 const app = express();
-
-// ✅ CORRECT: Add CORS origins properly
-app.use(cors({
-    origin: ["http://127.0.0.1:5500", "https://physics-lab-frontend.vercel.app"]
-}));
-
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
@@ -21,5 +16,9 @@ mongoose.connect(process.env.MONGO_URI, {
     useUnifiedTopology: true
 }).then(() => {
     console.log("MongoDB Connected");
-    app.listen(5000, () => console.log("Server running on port 5000"));
+
+    // ✅ Correct port usage here
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 }).catch(err => console.log(err));
